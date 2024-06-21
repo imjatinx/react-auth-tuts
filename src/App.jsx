@@ -6,7 +6,7 @@ import Login from './screens/Login.jsx'
 import Register from './screens/Register.jsx'
 import Dashboard from './screens/Dashboard.jsx'
 import PrivateRoutes from './components/PrivateRoutes.jsx'
-import Settings from './screens/Settings'
+import Settings from './screens/Settings.jsx'
 
 function App() {
 
@@ -16,13 +16,11 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        {/* <Route path='/' element={<PrivateRoutes />}>
+        <Route path='/' element={<PrivateRoutes />}>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/settings' element={<Settings/>}/>
-        </Route> */}
-        <PrivateRoutes path='/dashboard' component={<Dashboard/>}/>
+        </Route>
       </Routes>
-
     </>
   )
 }

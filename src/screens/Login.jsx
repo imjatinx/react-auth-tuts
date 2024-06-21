@@ -1,26 +1,15 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import API from '../api'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../contexts/AuthContext.jsx'
 
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const navigate = useNavigate();
+  const { login } = useContext(AuthContext)
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    try {
-      const response = await API.post('/login', { username, password })
-      if (response.data.access && response.data.refresh) {
-        localStorage.setItem('token', response.data.access)
-        console.log('Response:', response.data);
-        navigate("/dashboard")
-      }
-    } catch (error) {
-      alert("Login Failed! Wrong Credentials")
-    }
+    await login(username, password)
   }
 
   return (
